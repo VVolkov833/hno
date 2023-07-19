@@ -2,25 +2,12 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 2,
 	"customTemplates": [
-		{
-			"name": "blank",
-			"postTypes": [
-				"page",
-				"post"
-			],
-			"title": "Blank"
-		},
-		{
-			"name": "blog-alternative",
-			"postTypes": [
-				"page"
-			],
-			"title": "Blog (Alternative)"
-		},
+
 		{
 			"name": "404",
 			"postTypes": [
-				"page"
+				"page",
+				"post"
 			],
 			"title": "404"
 		}
@@ -60,14 +47,9 @@
 					"slug": "secondary"
 				},
 				{
-					"color": "#f7d4fc",
-					"name": "Secondary Lighter",
-					"slug": "secondary-lighter"
-				},
-				{
 					"color": "#dcfed6",
-					"name": "Secondary Alt Lighter",
-					"slug": "secondary-alt-lighter"
+					"name": "Secondary Alt",
+					"slug": "secondary-alt"
 				},
 				{
 					"color": "#ebebeb",
@@ -83,20 +65,33 @@
 					"color": "#eeeeee",
 					"name": "Tertiary Lighter",
 					"slug": "tertiary-lighter"
+				},
+				{
+					"color": "#3778c4",
+					"name": "Termin",
+					"slug": "termin"
 				}
 			],
 			"gradients": [
 				{
-					"slug": "purple-to-yellow",
-					"gradient": "linear-gradient(160deg, var(--wp--preset--color--primary), var(--wp--preset--color--secondary))",
-					"name": "Purple to Yellow"
-				}
-			],
-			"duotone": [
+					"gradient": "linear-gradient(-90deg, var(--wp--preset--color--primary-lighter), var(--wp--preset--color--base))",
+					"name": "Primary Back",
+					"slug": "primary-back"
+				},
 				{
-					"slug": "purple-and-yellow",					
-					"colors": [ "#D1D1E4", "#EEEADD" ],
-					"name": "Purple and yellow"
+					"gradient": "linear-gradient(-5deg, var(--wp--preset--color--primary-lighter), var(--wp--preset--color--base))",
+					"name": "Primary Back Vertical",
+					"slug": "primary-back-vertical"
+				},
+				{
+					"gradient": "linear-gradient(90deg, var(--wp--preset--color--secondary), var(--wp--preset--color--base))",
+					"name": "Secondary Back",
+					"slug": "secondary-back"
+				},
+				{
+					"gradient": "linear-gradient(-90deg, var(--wp--preset--color--secondary-alt), var(--wp--preset--color--base))",
+					"name": "Tertiary Back",
+					"slug": "tertiary-back"
 				}
 			]
 		},
