@@ -190,7 +190,7 @@
 							"fontStyle": "normal",
 							"fontWeight": "400",
 							"src": [
-								"./assets/fonts/heebo/heebo-v21-latin-regular.woff2"
+								"file:./assets/fonts/heebo/heebo-v21-latin-regular.woff2"
 							]
 						}
 					],
