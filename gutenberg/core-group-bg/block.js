@@ -11,7 +11,10 @@
             if ( typeof settings.attributes === 'undefined' || !~effected_blocks.indexOf( name ) ) { return settings }
 
             settings.attributes = Object.assign( settings.attributes, {
-                turnToHero: {
+                curveTop: {
+                    type: 'boolean',
+                },
+                curveBottom: {
                     type: 'boolean',
                 }
             });
@@ -21,7 +24,23 @@
     );
 
     // add the control / input
-    var el = wp.element.createElement;
+    const el = wp.element.createElement;
+    const toggle = (props, name, label) => {
+        return props.isSelected && ~effected_blocks.indexOf( props.name ) ? (
+            el( wp.blockEditor.InspectorControls, {},
+                el( wp.components.PanelBody, {},
+                    el( wp.components.ToggleControl, {
+                        label: label,
+                        checked: !!props.attributes[name],
+                        onChange: function() {
+                            console.log( name, props.attributes[name] );
+                            props.setAttributes( { [name]: !props.attributes[name] } );
+                        }
+                    })
+                )
+            )
+        ) : null
+    };
     wp.hooks.addFilter(
         'editor.BlockEdit',
         blockName + '-control',
@@ -31,19 +50,8 @@
                     wp.element.Fragment,
                     {},
                     el( BlockEdit, props ),
-                    props.isSelected && ~effected_blocks.indexOf( props.name ) ? (
-                        el( wp.blockEditor.InspectorControls, {},
-                            el( wp.components.PanelBody, {},
-                                el( wp.components.ToggleControl, {
-                                    label: 'Apply as the Background', // ++add translation
-                                    checked: !!props.attributes.turnToHero,
-                                    onChange: function() {
-                                        props.setAttributes( { turnToHero: !props.attributes.turnToHero } );
-                                    }
-                                })
-                            )
-                        )
-                    ) : null
+                    toggle( props, 'curveTop', 'Apply Top Curve' ),
+                    toggle( props, 'curveBottom', 'Apply Bottom Curve' )
                 );
             };
         })
@@ -56,7 +64,7 @@
         function (extraProps, blockType, attributes) {
 
             if ( !~effected_blocks.indexOf( blockType.name ) ) { return extraProps }
-            if ( typeof attributes.turnToHero === 'undefined' || !attributes.turnToHero ) { return extraProps }
+            if ( typeof attributes.curveTop === 'undefined' || !attributes.curveTop ) { return extraProps }
 
             extraProps.className = extraProps.className + ' fct-img-to-bg';
             return extraProps;
