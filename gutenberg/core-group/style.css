@@ -1,0 +1,45 @@
+.fct-core-group-curve-1,
+.fct-core-group-curve-2,
+.fct-core-group-curve-3 {
+    position: relative;
+}
+.fct-core-group-curve-1 > *,
+.fct-core-group-curve-2 > *,
+.fct-core-group-curve-3 > * {
+    position: relative;
+    z-index: 1;
+}
+.fct-core-group-curve-1::after,
+.fct-core-group-curve-2::after,
+.fct-core-group-curve-3::after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    inset: 0 0 0 0;
+    mask-image: var(--curve);
+    -webkit-mask-image: var(--curve);
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-position: 0 100%;
+    -webkit-mask-position: 0 100%;
+    mask-size: 100% auto;
+    -webkit-mask-size: 100% auto;
+}
+.fct-core-group-curve-1::after {
+    --curve: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 160' xmlns='http://www.w3.org/2000/svg'%0A%3E%3Cpath stroke='none' fill='blacnk' d='M 0,0 V 161 H 512 V 138.6 C 252.3,207.1 83.4,93.4 0,0 Z'/%3E%3C/svg%3E%0A");
+    background-color: var(--wp--preset--color--base);
+}
+
+.fct-core-group-curve-2::after {
+    --curve: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 160' xmlns='http://www.w3.org/2000/svg'%0A%3E%3Cpath stroke='none' fill='black' d='M 512,0 V 160 H 0 V 137.7 C 260,205.8 428.5,92.8 512,0 Z'/%3E%3C/svg%3E%0A");
+    background-color: var(--wp--preset--color--base);
+}
+
+.fct-core-group-curve-3::after {
+    --curve: url("data:image/svg+xml,%0A%3Csvg viewBox='0 0 512 127' xmlns='http://www.w3.org/2000/svg'%0A%3E%3Cpath stroke='none' fill='black' d='M 56,9 C 37,9 18.8,9.7 0,10.8 V 127 H 512 C 397.5,67 235,10.5 56,9.3 Z'/%3E%3C/svg%3E%0A");
+    background-color: var(--wp--preset--color--tertiary-lighter);
+}
+
+.fct-core-group-shadow {
+    box-shadow: 0px 4px 40px 0px #00000026;
+}
