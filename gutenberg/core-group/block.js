@@ -44,10 +44,9 @@
             )
         ) : null
     };
-    const select = (props, name, label, options) => {
+    const select = (props, label, options) => {
         const getClassName = () => {
             const classes = (props.attributes.className?.split(' ') || []).filter(Boolean);
-            console.log( classes, options);
             for (const className of classes) {
                 const matchedOption = options.find(option => option.value === className);
                 if (matchedOption) {
@@ -94,13 +93,14 @@
                     wp.element.Fragment,
                     {},
                     el(BlockEdit, props),
-                    select(props, prefix + 'curve-bottom', 'Bottom Curve', [
+                    select(props, 'Bottom Curve', [
                         { value: '', label: 'No Bottom Curve' },
                         { value: prefix + 'curve-1', label: 'Curve 1' },
                         { value: prefix + 'curve-2', label: 'Curve 2' },
                         { value: prefix + 'curve-3', label: 'Curve 3' },
                     ]),
-                    toggle(props, prefix + 'shadow', 'Add shadow'),
+                    toggle(props, prefix + 'crop-height', 'Crop Height'),
+                    toggle(props, prefix + 'shadow', 'Add Shadow'),
                 );
             };
         })
