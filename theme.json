@@ -71,6 +71,11 @@
 					"slug": "tertiary-lighter"
 				},
 				{
+					"color": "#8f9aa5",
+					"name": "Rare 1",
+					"slug": "rare-1"
+				},
+				{
 					"color": "#3778c4",
 					"name": "Termin",
 					"slug": "termin"
@@ -94,6 +99,11 @@
 				},
 				{
 					"gradient": "linear-gradient(-90deg, var(--wp--preset--color--secondary-alt), var(--wp--preset--color--base))",
+					"name": "Secondary Alt Back",
+					"slug": "secondary-alt-back"
+				},
+				{
+					"gradient": "linear-gradient(-90deg, var(--wp--preset--color--base), var(--wp--preset--color--tertiary-lighter))",
 					"name": "Tertiary Back",
 					"slug": "tertiary-back"
 				}
@@ -245,6 +255,15 @@
 					},
 					"size": "10rem",
 					"slug": "xx-large"
+				}
+			]
+		},
+		"shadow": {
+			"presets": [
+				{
+					"name": "Common",
+					"slug": "common",
+					"shadow": "0px 4px 40px 0px #00000026"
 				}
 			]
 		},
@@ -594,6 +613,12 @@
 						 }
 				   }
 			  }
+			},
+			"core/media-text": {
+				"border": {
+					"radius": "18px"
+				},
+				"shadow": "var(--wp--preset--shadow--common)"
 			}
 		},
 		"color": {
