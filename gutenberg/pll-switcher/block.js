@@ -1,18 +1,22 @@
-( function() {
+(() => {
 	const el = wp.element.createElement;
 
 	wp.blocks.registerBlockType( 'fct-gutenberg/pll-switcher', {
 		title: 'FCT PLL Switcher',
         icon: 'block-default',
 		category: 'widgets',
-		edit: function( props ) {
+		edit: props => {
 			return el(
-				'div',
-				{ className: props.className },
-                'LANGUAGE'
+				'nav',
+				{ className: props.className + ' wp-block-navigation' },
+				el(
+					'span',
+					{},
+					'LANGUAGE'
+				)
 			);
 		},
-		save: function( props ) {
+		save: () => {
             return null;
 		}
 	} );

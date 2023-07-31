@@ -10,7 +10,7 @@ add_action( 'init', function() use ( $block_name ) {
 
         return array_reduce( pll_the_languages( [ 'raw' => 1 ] ), function( $result, $item ) {
             if ( $item['current_lang'] ) { return $result; }
-            $result .= '<a href="'.$item['url'].'">'.$item['slug'].'</a>';
+            $result .= '<nav class="wp-block-navigation"><a href="'.$item['url'].'" class="pll-language-switcher">'.$item['slug'].'</a></nav>';
             return $result;
         }, '' );
 

@@ -114,8 +114,9 @@
 			"wideSize": "1200px"
 		},
 		"spacing": {
+			"blockGap": true,
 			"spacingScale": {
-				"steps": 0
+				"steps": 5
 			},
 			"spacingSizes": [
 				{
@@ -619,6 +620,11 @@
 					"radius": "18px"
 				},
 				"shadow": "var(--wp--preset--shadow--common)"
+			},
+			"core/group": {
+				"spacing": {
+					"blockGap": "1.5rem"
+				}
 			}
 		},
 		"color": {

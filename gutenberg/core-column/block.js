@@ -1,6 +1,6 @@
 (() => {
     //++can store data inside style variables to not ruin the block structure
-    const effected_blocks = ['core/group'];
+    const effected_blocks = ['core/column'];
 
     const addClass = (classNames, classNameToAdd) => {
         const classes = classNames?.split(' ') || [];
@@ -93,12 +93,6 @@
                     wp.element.Fragment,
                     {},
                     el(BlockEdit, props),
-                    select(props, 'Bottom Curve', [
-                        { value: '', label: 'No Bottom Curve' },
-                        { value: prefix + 'curve-1', label: 'Curve 1' },
-                        { value: prefix + 'curve-2', label: 'Curve 2' },
-                        { value: prefix + 'curve-3', label: 'Curve 3' },
-                    ]),
                     toggle(props, prefix + 'shadow', 'Add Shadow'),
                 );
             };
