@@ -2,9 +2,8 @@
 
 	const el = wp.element.createElement;
 	const InnerBlocks = wp.blockEditor.InnerBlocks;
-    const TextControl = wp.components.TextControl;
 
-	wp.blocks.registerBlockType( 'fct/cropped-height', {
+	wp.blocks.registerBlockType( blockModName, {
 		title: 'FCT Cropped Height',
         icon: 'columns',
 		category: 'widgets',
@@ -23,7 +22,7 @@
             if ( props.attributes.minHeight ) { style['min-height'] = props.attributes.minHeight+'px'; }
             if ( props.attributes.maxHeight ) { style['max-height'] = props.attributes.maxHeight+'px'; }
 			return el( 'div',
-				{ 'style': style },
+				{ className: prefix+'main', 'style': style },
 				el( InnerBlocks, {
                     allowedBlocks: [
                         'core/heading', 'core/paragraph', 'core/image', 'core/button'

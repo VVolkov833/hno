@@ -24,7 +24,7 @@ add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type
     };
 
     register_block_type( $block_type_name, [
-        'editor_script' => $block_mod_name.'-block',
+        'editor_script' => $block_mod_name,
         'editor_style' => $block_mod_name.'-editor',
         'render_callback' => $print_block
     ] );
@@ -41,10 +41,9 @@ add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type
         })();
     ';
 
-    wp_add_inline_script(
-        $block_mod_name.'-block',
-        $script_content
-    );
+    wp_register_script( $block_mod_name, '', ['wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components'] );  // to use variables without defining globals
+    wp_enqueue_script( $block_mod_name );
+    wp_add_inline_script( $block_mod_name, $inline_script );
 
     wp_register_style(
         $block_mod_name.'-editor',
@@ -64,30 +63,4 @@ add_action( 'wp_enqueue_scripts', function() use ($block_mod_name, $block_type_n
     wp_register_style( $block_mod_name, false );
     wp_enqueue_style( $block_mod_name );
     wp_add_inline_style( $block_mod_name, $style_contents );
-});
-
-$block_mod_name = FCT_SET['pref'].basename( __DIR__ );
-$block_dir_url = get_template_directory_uri() . '/gutenberg/'. basename( __DIR__ );
-$block_type_name = FCT_SET['var'].'/'.basename( __DIR__ );
-
-add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type_name) {
-
-    register_block_type( $block_type_name, [
-        'editor_script' => $block_mod_name.'-block',
-        'editor_style' => $block_mod_name.'-editor',
-    ] );
-
-    wp_register_script( // ++inline like with core-group
-        $block_mod_name.'-block',
-        $block_dir_url.'/block.js',
-        ['wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components'],
-        FCT_VER
-    );
-    
-    wp_register_style(
-        $block_mod_name.'-editor',
-        $block_dir_url.'/editor.css',
-        ['wp-edit-blocks'],
-        FCT_VER
-    );
 });

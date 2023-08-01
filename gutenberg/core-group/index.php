@@ -8,13 +8,11 @@ add_action( 'enqueue_block_editor_assets', function() use ($block_mod_name, $blo
 
     $block_path = __DIR__ . '/block.js';
 
-    $js_prefix = FCT_SET['pref'].basename( __DIR__ ).'-';
-
     $script_contents = file_get_contents( $block_path );
 
     $inline_script  = '
         (() => {
-            const prefix = "' . esc_js( $js_prefix ) . '";
+            const prefix = "' . esc_js( $block_mod_name.'-' ) . '";
             const blockModName = "' . esc_js( $block_type_name ) . '";
             '.$script_contents.'
         })();
