@@ -8,13 +8,24 @@ add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type
 
     $print_block = function($props, $content = null) use ($block_mod_name) {
 
-        // style min & max height if props are set
+        $style = [];
+        if ( $props['height'] ) { $style['--height'] = strval( $props['height'] ).'px'; }
+        if ( $props['buttonText'] ) { $style['--button-text'] = '\''.$props['buttonText'].'\''; }
+        if ( !empty( $style ) ) {
+            $style_toprint = array_reduce( array_keys( $style ), function($result, $item) use ( $style ) {
+                $result .= $item.':'.$style[ $item ].';';
+                return $result;
+            }, '' );
+            $style_toprint = ' style="'.$style_toprint.'"';
+        }
 
         ob_start();
 
         ?>
-            <div class="<?php echo $block_mod_name ?>">
-                <?php echo( $content ) ?>
+            <div class="<?php echo $block_mod_name ?>"<?php echo $style_toprint ?>>
+                <div class="<?php echo $block_mod_name ?>-inner">
+                    <?php echo( $content ) ?>
+                </div>
             </div>
         <?php
 
@@ -62,5 +73,5 @@ add_action( 'wp_enqueue_scripts', function() use ($block_mod_name, $block_type_n
 
     wp_register_style( $block_mod_name, false );
     wp_enqueue_style( $block_mod_name );
-    wp_add_inline_style( $block_mod_name, $style_contents );
+    wp_add_inline_style( $block_mod_name, FCT_DEV ? $style_contents : css_minify( $style_contents ) );
 });

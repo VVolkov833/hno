@@ -2,6 +2,7 @@
 
 	const el = wp.element.createElement;
 	const InnerBlocks = wp.blockEditor.InnerBlocks;
+    const TextControl = wp.components.TextControl;
 
 	wp.blocks.registerBlockType( blockModName, {
 		title: 'FCT Cropped Height',
@@ -9,18 +10,18 @@
 		category: 'widgets',
 
 		attributes: {
-			minHeight: {
+			height: {
 				type: 'number'
 			},
-            maxHeight: {
-				type: 'number'
-			}
+            buttonText: {
+                type: 'string'
+            }
 		},
 
 		edit: props => {
             let style = {};
-            if ( props.attributes.minHeight ) { style['min-height'] = props.attributes.minHeight+'px'; }
-            if ( props.attributes.maxHeight ) { style['max-height'] = props.attributes.maxHeight+'px'; }
+            if ( props.attributes.height ) { style['--height'] = props.attributes.height+'px'; }
+            if ( props.attributes.buttonText ) { style['--button-text'] = '"'+props.attributes.buttonText+'"'; }
 			return el( 'div',
 				{ className: prefix+'main', 'style': style },
 				el( InnerBlocks, {
@@ -40,22 +41,21 @@
                     el( wp.blockEditor.InspectorControls, {},
                         el( wp.components.PanelBody, {},
                             el( wp.components.RangeControl, {
-                                label: 'Min Height (px)',
-                                value: props.attributes.minHeight || 300,
+                                label: 'Height (px)',
+                                value: props.attributes.height || 300,
                                 onChange: value => {
-                                    props.setAttributes( { minHeight: value } );
+                                    props.setAttributes( { height: value } );
                                 },
-                                min: 150,
-                                max: 600
+                                min: 100,
+                                max: 800
                             }),
-                            el( wp.components.RangeControl, {
-                                label: 'Max Height (px)',
-                                value: props.attributes.maxHeight || 720,
-                                onChange: value => {
-                                    props.setAttributes( { maxHeight: value } );
-                                },
-                                min: 150,
-                                max: 3000
+                            el( TextControl, {
+                                label: 'Button Text',
+                                placeholder: 'Ausklappen',
+                                value: props.attributes.buttonText,
+                                onChange: function( value ) {
+                                    props.setAttributes( { buttonText: value } );
+                                }
                             })
                         )
                     )
@@ -67,3 +67,5 @@
 		},
 	} );
 })();
+
+// ++ can actually make it on basis of core/group
