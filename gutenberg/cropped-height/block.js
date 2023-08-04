@@ -23,7 +23,7 @@
             if ( props.attributes.height ) { style['--height'] = props.attributes.height+'px'; }
             if ( props.attributes.buttonText ) { style['--button-text'] = '"'+props.attributes.buttonText+'"'; }
 			return el( 'div',
-				{ className: prefix+'main', 'style': style },
+				{ className: props.className+ ' ' +prefix+'main', 'style': style },
 				el( InnerBlocks, {
                     allowedBlocks: [
                         'core/heading', 'core/paragraph', 'core/image', 'core/button'
@@ -68,4 +68,8 @@
 	} );
 })();
 
+// ++ can count the height by js and add it as css variable on ready and resize
+// ++ can make a variant with checkbox and label
+// ++ can make an option to move everything along with the content reveal
+// ++ can optimize the animation, like keep the paddings of inner and move everything to single hover
 // ++ can actually make it on basis of core/group

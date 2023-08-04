@@ -99,7 +99,7 @@
                         { value: prefix + 'curve-2', label: 'Curve 2' },
                         { value: prefix + 'curve-3', label: 'Curve 3' },
                     ]),
-                    toggle(props, prefix + 'shadow', 'Add Shadow'),
+                    toggle(props, prefix + 'shadow', 'Add Shadow')
                 );
             };
         })

@@ -1,0 +1,16 @@
+.fct-images-decor-main button {
+    display:block;
+    width:150px;
+    height:150px;
+    margin:0 auto 15px;
+    border:1px solid #aaa;
+    border-radius:50%;
+    padding:0;
+    box-sizing:border-box;
+    overflow:hidden;
+    background-color:#fff;
+}
+.fct-images-decor-main figcaption {
+    cursor: text;
+}
+/* filter: sepia(60%); */
