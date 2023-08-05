@@ -23,7 +23,7 @@
             if ( props.attributes.height ) { style['--height'] = props.attributes.height+'px'; }
             if ( props.attributes.buttonText ) { style['--button-text'] = '"'+props.attributes.buttonText+'"'; }
 			return el( 'div',
-				{ className: props.className+ ' ' +prefix+'main', 'style': style },
+				{ className: props.className+ ' ' +prefix+'main', style },
 				el( InnerBlocks, {
                     allowedBlocks: [
                         'core/heading', 'core/paragraph', 'core/image', 'core/button'

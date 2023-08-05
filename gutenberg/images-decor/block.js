@@ -57,45 +57,61 @@
 
 		edit: props => {
 
-			const onSelectImage = media => {
+			const onSelectImage = (media, ind) => {
+                const mediaID = 'media'+ind+'ID';
+                const mediaURL = 'media'+ind+'URL';
 				return props.setAttributes( {
-					media1URL: media.sizes.thumbnail ? media.sizes.thumbnail.url : media.url,
-					media1ID: media.id,
+                    [mediaID]: media.id,
+					[mediaURL]: media.sizes.thumbnail ? media.sizes.thumbnail.url : media.url,
 				});
 			};
-            
-			return el(
-				'div',
-				{ className: props.className+ ' ' +prefix+'main' },
-                el(
-					'figure',
-					{},
-					el( MediaUpload, {
-						onSelect: onSelectImage,
-						allowedTypes: 'image',
-						value: props.attributes.media1ID,
-						render: obj => {
-							return el(
-								Button,
-								{
-									onClick: obj.open,
-								},
-								! props.attributes.media1ID
-									? 'Image'
-									: el( 'img', { src: props.attributes.media1URL } )
-							);
-						},
-					}),
+
+            const mediaBox = ind => {
+                const mediaID = 'media'+ind+'ID';
+                const mediaURL = 'media'+ind+'URL';
+                const mediaCaption = 'media'+ind+'Caption';
+                return [
+                    'figure',
+                    {},
+                    el( MediaUpload, {
+                        onSelect: media => { onSelectImage(media, ind) },
+                        allowedTypes: 'image',
+                        value: props.attributes[mediaID],
+                        render: obj => {
+                            return el(
+                                Button,
+                                {
+                                    onClick: obj.open,
+                                },
+                                ! props.attributes[mediaID]
+                                    ? el( 'span', {}, 'Image' )
+                                    : el( 'img', { src: props.attributes[mediaURL] } )
+                            );
+                        },
+                    }),
                     el( RichText, {
                         tagName: 'figcaption',
                         placeholder: 'Caption',
-                        value: props.attributes.media1Caption,
+                        value: props.attributes[mediaCaption],
                         onChange: value => {
-                            props.setAttributes( { media1Caption: value } );
+                            props.setAttributes( { [mediaCaption]: value } );
                         },
                         allowedFormats: ['core/bold', 'core/italic']
-                    }),
-                ),
+                    })
+                ];
+
+            };
+            
+            let style = {};
+            if ( props.attributes.sepia ) { style['--sepia'] = props.attributes.sepia+'%'; }
+
+			return el(
+				'div',
+				{ className: props.className+ ' ' +prefix+'main', style },
+                el( ...mediaBox(1) ),
+                el( ...mediaBox(2) ),
+                el( ...mediaBox(3) ),
+                el( ...mediaBox(4) ),
                 el( // sidebar
                     wp.element.Fragment,
                     {},

@@ -643,19 +643,19 @@
 				":hover": {
 					"color": {
 						"background": "var(--wp--preset--color--primary-lighter)",
-						"text": "var(--wp--preset--color--base)"
+						"text": "var(--wp--preset--color--contrast)"
 					}
 				},
 				":focus": {
 					"color": {
 						"background": "var(--wp--preset--color--primary-lighter)",
-						"text": "var(--wp--preset--color--base)"
+						"text": "var(--wp--preset--color--contrast)"
 					}
 				},
 				":active": {
 					"color": {
 						"background": "var(--wp--preset--color--primary-lighter)",
-						"text": "var(--wp--preset--color--base)"
+						"text": "var(--wp--preset--color--contrast)"
 					}
 				},
 				":visited": {

@@ -1,16 +1,47 @@
-.fct-images-decor-main button {
+.fct-images-decor-main {
+    display: grid;
+    grid-template-columns: 47% 47%;
+    grid-gap: 6%;
+    --sepia: 0%;
+  }
+
+.fct-images-decor-main figure {
     display:block;
-    width:150px;
-    height:150px;
-    margin:0 auto 15px;
-    border:1px solid #aaa;
-    border-radius:50%;
-    padding:0;
-    box-sizing:border-box;
-    overflow:hidden;
-    background-color:#fff;
+    padding: 4px;
+    box-sizing: border-box;
 }
+
+.fct-images-decor-main figure:nth-child(2n) {
+    transform: translateY(30px);
+}
+
+.fct-images-decor-main button {
+    appearance: none;
+    width: 100%;
+    height: auto;
+    padding-bottom: 60%;
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: var(--wp--preset--color--tertiary);
+}
+.fct-images-decor-main button span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.fct-images-decor-main button img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: sepia(var(--sepia));
+}
+
 .fct-images-decor-main figcaption {
     cursor: text;
 }
-/* filter: sepia(60%); */
