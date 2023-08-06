@@ -5,13 +5,6 @@
     position: relative;
 }
 
-.fct-core-group-curve-1>*,
-.fct-core-group-curve-2>*,
-.fct-core-group-curve-3>* {
-    position: relative;
-    z-index: 1;
-}
-
 .fct-core-group-curve-1::before,
 .fct-core-group-curve-2::before,
 .fct-core-group-curve-3::before {

@@ -8,25 +8,35 @@ add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type
 
     $print_block = function($props, $content = null) use ($block_mod_name) {
 
+        $style = [];
+        if ( $props['sepia'] ) { $style['--sepia'] = strval( $props['sepia'] ); }
+        if ( !empty( $style ) ) {
+            $style_toprint = array_reduce( array_keys( $style ), function($result, $item) use ( $style ) {
+                $result .= $item.':'.$style[ $item ].';';
+                return $result;
+            }, '' );
+            $style_toprint = ' style="'.$style_toprint.'"';
+        }
+
         $print_figure = function($image) {
             ?>
                 <figure>
                     <?php echo wp_get_attachment_image( $image['id'], 'large' ) ?>
+                    <?php if ( $image['caption'] ) { ?>
                     <figcaption><?php echo wp_kses_post( $image['caption'] ) ?></figcaption>
+                    <?php } ?>
                 </figure>
             <?php
         };
 
         ob_start();
-
         ?>
-            <div class="<?php echo $block_mod_name ?>">
+            <div class="<?php echo $block_mod_name ?>"<?php echo $style_toprint ?>>
                 <div class="<?php echo $block_mod_name ?>-inner">
                     <?php array_map( $print_figure, $props['images'] ) ?>
                 </div>
             </div>
         <?php
-
         $content = ob_get_contents();
         ob_end_clean();
         return $content;
