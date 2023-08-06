@@ -8,14 +8,22 @@ add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type
 
     $print_block = function($props, $content = null) use ($block_mod_name) {
 
+        $print_figure = function($image) {
+            ?>
+                <figure>
+                    <?php echo wp_get_attachment_image( $image['id'], 'large' ) ?>
+                    <figcaption><?php echo wp_kses_post( $image['caption'] ) ?></figcaption>
+                </figure>
+            <?php
+        };
+
         ob_start();
 
         ?>
             <div class="<?php echo $block_mod_name ?>">
-                <pre class="<?php echo $block_mod_name ?>-inner">
-                    <?php echo $props['images'][1]['caption'] ?>
-                    <?php print_r( $props ) ?>
-                </pre>
+                <div class="<?php echo $block_mod_name ?>-inner">
+                    <?php array_map( $print_figure, $props['images'] ) ?>
+                </div>
             </div>
         <?php
 
