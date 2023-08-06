@@ -52,11 +52,21 @@
                             return el(
                                 Button,
                                 {
+                                    type: 'button',
+                                    className: 'select',
                                     onClick: obj.open,
                                 },
-                                ! mediaID
-                                    ? el( 'span', {}, 'Image' )
-                                    : el( 'img', { src: mediaURL } )
+                                mediaID
+                                    ? el( 'img', { src: mediaURL } )
+                                    : el( 'span', {}, 'Image' ),
+                                mediaID
+                                    ? el( 'button', { type: 'button', className: 'clear', onClick: e => {
+                                        e.stopPropagation();
+                                        images[ind].id = 0;
+                                        images[ind].url = '';
+                                        props.setAttributes({ images });
+                                      }}, '+' )
+                                    : null,
                             );
                         },
                     }),

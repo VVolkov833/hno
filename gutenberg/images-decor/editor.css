@@ -17,7 +17,7 @@
     transform: translateY(var(--bias));
 }
 
-.fct-images-decor-main button {
+.fct-images-decor-main button.select {
     appearance: none;
     width: 100%;
     height: auto;
@@ -27,13 +27,13 @@
     overflow: hidden;
     background-color: var(--wp--preset--color--tertiary);
 }
-.fct-images-decor-main button span {
+.fct-images-decor-main button.select span {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
-.fct-images-decor-main button img {
+.fct-images-decor-main button.select img {
     position: absolute;
     left: 0;
     top: 0;
@@ -42,6 +42,22 @@
     object-fit: cover;
     object-position: center top;
     filter: sepia(var(--sepia));
+}
+
+.fct-images-decor-main button.clear {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    appearance: none;
+    font-size: 20px;
+    line-height: 1;
+    border-radius: 50%;
+    border: none;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+.fct-images-decor-main button.clear:hover {
+    color: red;
 }
 
 .fct-images-decor-main  {

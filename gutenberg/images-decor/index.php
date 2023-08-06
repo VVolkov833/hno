@@ -21,9 +21,13 @@ add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type
         $print_figure = function($image) {
             ?>
                 <figure>
-                    <?php echo wp_get_attachment_image( $image['id'], 'large' ) ?>
+                    <?php if ( $image['id'] ) { ?>
+                        <?php echo wp_get_attachment_image( $image['id'], 'large' ) ?>
+                    <?php } else { ?>
+                        <span></span>
+                    <?php } ?>
                     <?php if ( $image['caption'] ) { ?>
-                    <figcaption><?php echo wp_kses_post( $image['caption'] ) ?></figcaption>
+                        <figcaption><?php echo wp_kses_post( $image['caption'] ) ?></figcaption>
                     <?php } ?>
                 </figure>
             <?php
