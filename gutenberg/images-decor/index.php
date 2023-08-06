@@ -12,9 +12,10 @@ add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type
 
         ?>
             <div class="<?php echo $block_mod_name ?>">
-                <div class="<?php echo $block_mod_name ?>-inner">
-                    Content <?php echo( $content ) ?>
-                </div>
+                <pre class="<?php echo $block_mod_name ?>-inner">
+                    <?php echo $props['images'][1]['caption'] ?>
+                    <?php print_r( $props ) ?>
+                </pre>
             </div>
         <?php
 

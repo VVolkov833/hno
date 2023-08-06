@@ -2,7 +2,9 @@
     display: grid;
     grid-template-columns: 47% 47%;
     grid-gap: 6%;
+    padding-bottom: var(--bias);
     --sepia: 0%;
+    --bias: 30px;
   }
 
 .fct-images-decor-main figure {
@@ -12,7 +14,7 @@
 }
 
 .fct-images-decor-main figure:nth-child(2n) {
-    transform: translateY(30px);
+    transform: translateY(var(--bias));
 }
 
 .fct-images-decor-main button {
@@ -42,6 +44,9 @@
     filter: sepia(var(--sepia));
 }
 
-.fct-images-decor-main figcaption {
+.fct-images-decor-main  {
     cursor: text;
+}
+.fct-images-decor-main figcaption [data-rich-text-placeholder]::after {
+    opacity: 0.3;
 }

@@ -1,7 +1,7 @@
 (() => {
 
 	const el = wp.element.createElement;
-	const InnerBlocks = wp.blockEditor.InnerBlocks;
+	//const InnerBlocks = wp.blockEditor.InnerBlocks;
     //const TextControl = wp.components.TextControl;
     const Button = wp.components.Button;
 	const RichText = wp.blockEditor.RichText;
@@ -17,84 +17,57 @@
             sepia: {
                 type: 'number'
             },
-			media1ID: {
-				type: 'number'
-			},
-			media1URL: {
-				type: 'string'
-			},
-			media1Caption: {
-				type: 'string'
-			},
-			media2ID: {
-				type: 'number'
-			},
-			media2URL: {
-				type: 'string'
-			},
-			media2Caption: {
-				type: 'string'
-			},
-            media3ID: {
-				type: 'number'
-			},
-			media3URL: {
-				type: 'string'
-			},
-			media3Caption: {
-				type: 'string'
-			},
-            media4ID: {
-				type: 'number'
-			},
-			media4URL: {
-				type: 'string'
-			},
-			media4Caption: {
-				type: 'string'
-			},
+            images: {
+                type: 'array',
+                default: []
+            },
 		},
 
 		edit: props => {
 
 			const onSelectImage = (media, ind) => {
-                const mediaID = 'media'+ind+'ID';
-                const mediaURL = 'media'+ind+'URL';
-				return props.setAttributes( {
-                    [mediaID]: media.id,
-					[mediaURL]: media.sizes.thumbnail ? media.sizes.thumbnail.url : media.url,
-				});
+                const images = [...props.attributes.images];
+                const newImage = {
+                    id: media.id,
+                    url: media.sizes.thumbnail ? media.sizes.thumbnail.url : media.url,
+                    caption: images[ind]?.caption || '',
+                };
+                images[ind] = newImage;
+                props.setAttributes({ images });
 			};
 
             const mediaBox = ind => {
-                const mediaID = 'media'+ind+'ID';
-                const mediaURL = 'media'+ind+'URL';
-                const mediaCaption = 'media'+ind+'Caption';
+                const images = [...props.attributes.images];
+                const mediaID = images[ind]?.id || 0;
+                const mediaURL = images[ind]?.url || '';
+                const mediaCaption = images[ind]?.caption || '';
                 return [
                     'figure',
                     {},
                     el( MediaUpload, {
                         onSelect: media => { onSelectImage(media, ind) },
                         allowedTypes: 'image',
-                        value: props.attributes[mediaID],
+                        value: mediaID,
                         render: obj => {
                             return el(
                                 Button,
                                 {
                                     onClick: obj.open,
                                 },
-                                ! props.attributes[mediaID]
+                                ! mediaID
                                     ? el( 'span', {}, 'Image' )
-                                    : el( 'img', { src: props.attributes[mediaURL] } )
+                                    : el( 'img', { src: mediaURL } )
                             );
                         },
                     }),
                     el( RichText, {
                         tagName: 'figcaption',
                         placeholder: 'Caption',
-                        value: props.attributes[mediaCaption],
+                        value: mediaCaption,
                         onChange: value => {
-                            props.setAttributes( { [mediaCaption]: value } );
+                            const images = [...props.attributes.images];
+                            images[ind].caption = value;
+                            props.setAttributes({ images });
                         },
                         allowedFormats: ['core/bold', 'core/italic']
                     })
@@ -108,10 +81,10 @@
 			return el(
 				'div',
 				{ className: props.className+ ' ' +prefix+'main', style },
+                el( ...mediaBox(0) ),
                 el( ...mediaBox(1) ),
                 el( ...mediaBox(2) ),
                 el( ...mediaBox(3) ),
-                el( ...mediaBox(4) ),
                 el( // sidebar
                     wp.element.Fragment,
                     {},
@@ -132,7 +105,7 @@
 			);
 		},
 		save: props => {
-			return el( InnerBlocks.Content );
+			return null;//el( InnerBlocks.Content );
 		},
 	} );
 })();
