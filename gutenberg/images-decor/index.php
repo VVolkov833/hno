@@ -52,6 +52,7 @@ add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type
         'render_callback' => $print_block
     ] );
 
+    if ( !is_admin() ) { return; }
 
     $block_path = __DIR__ . '/block.js';
     $script_contents = file_get_contents( $block_path );
@@ -78,7 +79,7 @@ add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type
 
 add_action( 'wp_enqueue_scripts', function() use ($block_mod_name, $block_type_name) {
 
-    if ( !has_block( $block_type_name ) ) { return; }
+    //if ( !has_block( $block_type_name ) ) { return; } // doesn't work for reusable blocks
 
     $style_path = __DIR__ . '/style.css';
     $style_contents = file_get_contents( $style_path );

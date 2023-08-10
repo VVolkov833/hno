@@ -13,6 +13,10 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: hno
 */
 
+html {
+    scroll-behavior: smooth;
+}
+
 .pll-language-switcher {
     text-transform: uppercase;
 }

@@ -27,8 +27,11 @@ add_action( 'enqueue_block_editor_assets', function() use ($block_mod_name, $blo
 
 });
 
-add_action( 'current_screen', function($screen) use ($block_dir_url) {
+add_action( 'current_screen', function($screen) use ($block_dir_url) { // for block theme editor // ++ check if the next enqueue loads the script second time
     if( $screen->base !== 'site-editor' ) return;
+    add_editor_style( $block_dir_url.'/style.css' );
+});
+add_action( 'enqueue_block_editor_assets', function() use ($block_dir_url) { // for common editor
     add_editor_style( $block_dir_url.'/style.css' );
 });
 

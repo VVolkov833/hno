@@ -36,6 +36,11 @@
 					"slug": "primary-lighter"
 				},
 				{
+					"color": "#fffdfa",
+					"name": "Primary Lightest",
+					"slug": "primary-lightest"
+				},
+				{
 					"color": "#e48000",
 					"name": "Primary Alt",
 					"slug": "primary-alt"
@@ -602,18 +607,18 @@
 				"variations": {
 					"outline": {
 						"spacing": {
-							  "padding": {
+							"padding": {
 								"top": "0.667rem",
 								"right": "1.333rem",
 								"bottom": "0.4rem",
 								"left": "1.333rem"
-							   }
-						 },
-						 "border": {
+							}
+						},
+						"border": {
 							"width": "1px"
-						 }
-				   }
-			  }
+						}
+					}
+				}
 			},
 			"core/media-text": {
 				"border": {
@@ -624,6 +629,11 @@
 			"core/group": {
 				"spacing": {
 					"blockGap": "1.5rem"
+				}
+			},
+			"core/separator": {
+				"spacing": {
+					"margin": "0 auto 0 0"
 				}
 			}
 		},
@@ -660,7 +670,7 @@
 				},
 				":visited": {
 					"color": {
-						"text": "var(--wp--preset--color--primary-lighter)"
+						"text": "var(--wp--preset--color--primary-contrast)"
 					}
 				}
 			},

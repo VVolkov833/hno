@@ -26,7 +26,7 @@
 				{ className: props.className+ ' ' +prefix+'main', style },
 				el( InnerBlocks, {
                     allowedBlocks: [
-                        'core/heading', 'core/paragraph', 'core/image', 'core/button'
+                        'core/heading', 'core/paragraph', 'core/image', 'core/button', 'core/buttons'
                     ],
                     template: [
                         [ 'core/heading', {} ],

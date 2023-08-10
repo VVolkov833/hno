@@ -69,6 +69,23 @@ add_action( 'wp_enqueue_scripts', function() {
 	wp_enqueue_style( 'style', get_stylesheet_uri(), [], time() );
 });
 
+/* reusable blocks to the menu */
+add_action( 'admin_menu', function() {
+    add_menu_page(
+        'Reusable Gutenberg Blocks',   // Page title
+        'Reusable Blocks',             // Menu title
+        'manage_options',              // Capability required to access the page
+        'edit.php?post_type=wp_block', // URL or slug for the page
+        '',                            // Function to render the page (empty, as we just want a link)
+        'dashicons-block-default',     // Icon URL or Dashicon class (using default block icon)
+        25                             // Position in the left menu (adjust as needed)
+    );
+});
+
+add_shortcode( 'fct-year', function() { // always demanded by copyright XD
+    return date( 'Y' );
+});
+
 require __DIR__ . '/gutenberg/index.php';
 require __DIR__ . '/gutenberg/settings.php';
 

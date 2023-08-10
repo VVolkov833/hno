@@ -98,6 +98,7 @@
                         { value: prefix + 'curve-1', label: 'Curve 1' },
                         { value: prefix + 'curve-2', label: 'Curve 2' },
                         { value: prefix + 'curve-3', label: 'Curve 3' },
+                        { value: prefix + 'curve-4', label: 'Curve 4' },
                     ]),
                     toggle(props, prefix + 'shadow', 'Add Shadow')
                 );

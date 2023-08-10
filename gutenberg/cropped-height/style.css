@@ -51,7 +51,7 @@
     padding: var(--hover-padding);
     transform: translate( calc(var(--hover-padding) * -1), calc(var(--hover-padding) * -1));
     box-shadow: var(--wp--preset--shadow--common);
-    transition: box-shadow 0.3s ease, background-color 0.3s ease, max-height 0.5s 0.3s ease, padding-bottom 0.2s 0.3s ease;
+    transition: box-shadow 0.3s ease, background-color 0.2s ease, max-height 0.5s 0.15s ease, padding-bottom 0.2s 0.15s ease;
 }
 
 .fct-cropped-height-inner::after {
