@@ -18,12 +18,41 @@ html {
 }
 
 /* top nav menu */
+.wp-block-navigation__submenu-container {
+    border: none!important;
+    box-shadow: var(--wp--preset--shadow--common);
+}
+.wp-block-navigation.items-justified-right .wp-block-navigation__container .has-child .wp-block-navigation__submenu-container, .wp-block-navigation.items-justified-right .wp-block-page-list>.has-child .wp-block-navigation__submenu-container, .wp-block-navigation.items-justified-space-between .wp-block-page-list>.has-child:last-child .wp-block-navigation__submenu-container, .wp-block-navigation.items-justified-space-between>.wp-block-navigation__container>.has-child:last-child .wp-block-navigation__submenu-container {
+    left: 0;
+    right: auto;
+}
+
+.wp-block-navigation-item::after {
+    content: '';
+    width: 0;
+    height: 1px;
+    border-bottom: 1px solid var(--wp--preset--color--contrast);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: width .3s ease-out;
+}
+.wp-block-navigation-item.current-menu-item::after {
+    width: 50%;
+}
+.wp-block-navigation-item:hover::after {
+    width: 80%;
+}
 
 
 .pll-language-switcher {
     text-transform: uppercase;
 }
 
+.map-decored {
+    min-height: 300px;
+    filter: sepia(20%) grayscale(70%);
+}
 
 /* footer prototype ++ move to the reusable block itself */
 
