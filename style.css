@@ -17,9 +17,15 @@ html {
     scroll-behavior: smooth;
 }
 
+/* top nav menu */
+
+
 .pll-language-switcher {
     text-transform: uppercase;
 }
+
+
+/* footer prototype ++ move to the reusable block itself */
 
 .wp-block-image.fct-img-to-bg img {
     position: absolute;
@@ -29,20 +35,4 @@ html {
     z-index: 0!important;
     width: 100%;
     height: auto;
-}
-
-.relative {
-    position: relative;
-    overflow: hidden;
-}
-.relative > * {
-    z-index: 1;
-}
-.shadow {
-    text-shadow: 3px 4px 10px #00000096;
-}
-
-x {
-    border:1px dotted red;
-    box-sizing:border-box;
 }

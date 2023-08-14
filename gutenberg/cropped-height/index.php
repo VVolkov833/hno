@@ -10,6 +10,7 @@ add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type
 
         $style = [];
         if ( $props['height'] ) { $style['--height'] = strval( $props['height'] ).'px'; }
+        if ( $props['maxHeight'] ) { $style['--max-height'] = strval( $props['maxHeight'] ).'px'; }
         if ( $props['buttonText'] ) { $style['--button-text'] = '\''.$props['buttonText'].'\''; }
         if ( !empty( $style ) ) {
             $style_toprint = array_reduce( array_keys( $style ), function($result, $item) use ( $style ) {

@@ -1,18 +1,12 @@
 /* noscript with css to keep opened */
 .fct-cropped-height {
     --height: 300px;
-    --biggest-height: 720px;
+    --max-height: 800px;
     --button-ending: url("data:image/svg+xml,%3Csvg width='21' height='13' viewBox='0 0 21 13' fill='none' version='1.1' xmlns='http://www.w3.org/2000/svg'%0A%3E%3Cpath d='M18.75 2.25L10.25 10.75L1.75 2.25' stroke='%23e6c18f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
     --button-text: 'Ausklappen';
     --hover-padding: 30px;
     --gradient-height: 50px;
     --gradient-padding: 4px;
-}
-
-@media ( max-width: 779px ) {
-    .fct-cropped-height {
-        --biggest-height: 3000px; /* well, if it is a raw, still gotta use something big */
-    }
 }
 
 @media ( max-width: 599px ) {
@@ -46,7 +40,7 @@
 }
 
 .fct-cropped-height-inner:hover {
-    max-height: var(--biggest-height);
+    max-height: var(--max-height);
     box-sizing: content-box;
     padding: var(--hover-padding);
     transform: translate( calc(var(--hover-padding) * -1), calc(var(--hover-padding) * -1));

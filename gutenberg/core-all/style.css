@@ -1,0 +1,12 @@
+.relative {
+    position: relative;
+    overflow: hidden;
+}
+.relative > * {
+    z-index: 1;
+}
+@media (max-width:781px) {
+    .hide-on-mobile {
+        display: none;
+    }
+}

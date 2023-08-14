@@ -13,6 +13,9 @@
 			height: {
 				type: 'number'
 			},
+			maxHeight: {
+				type: 'number'
+			},
             buttonText: {
                 type: 'string'
             }
@@ -21,12 +24,13 @@
 		edit: props => {
             let style = {};
             if ( props.attributes.height ) { style['--height'] = props.attributes.height+'px'; }
+            if ( props.attributes.maxHeight ) { style['--max-height'] = props.attributes.maxHeight+'px'; }
             if ( props.attributes.buttonText ) { style['--button-text'] = '"'+props.attributes.buttonText+'"'; }
 			return el( 'div',
 				{ className: props.className+ ' ' +prefix+'main', style },
 				el( InnerBlocks, {
                     allowedBlocks: [
-                        'core/heading', 'core/paragraph', 'core/image', 'core/button', 'core/buttons'
+                        'core/heading', 'core/paragraph', 'core/list', 'core/image', 'core/button', 'core/buttons', 'core/table', 'core/separator'
                     ],
                     template: [
                         [ 'core/heading', {} ],
@@ -48,6 +52,15 @@
                                 },
                                 min: 100,
                                 max: 800
+                            }),
+                            el( wp.components.RangeControl, {
+                                label: 'Max-height extend (px)',
+                                value: props.attributes.maxHeight || 800,
+                                onChange: value => {
+                                    props.setAttributes( { maxHeight: value } );
+                                },
+                                min: 600,
+                                max: 3000
                             }),
                             el( TextControl, {
                                 label: 'Button Text',
