@@ -25,6 +25,7 @@ html {
 .wp-block-navigation.items-justified-right .wp-block-navigation__container .has-child .wp-block-navigation__submenu-container, .wp-block-navigation.items-justified-right .wp-block-page-list>.has-child .wp-block-navigation__submenu-container, .wp-block-navigation.items-justified-space-between .wp-block-page-list>.has-child:last-child .wp-block-navigation__submenu-container, .wp-block-navigation.items-justified-space-between>.wp-block-navigation__container>.has-child:last-child .wp-block-navigation__submenu-container {
     left: 0;
     right: auto;
+    padding: 0;
 }
 
 .wp-block-navigation-item::after {
