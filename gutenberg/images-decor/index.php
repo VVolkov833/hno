@@ -10,6 +10,7 @@ add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type
 
         $style = [];
         if ( $props['sepia'] ) { $style['--sepia'] = strval( $props['sepia'] ); }
+        $style_toprint = '';
         if ( !empty( $style ) ) {
             $style_toprint = array_reduce( array_keys( $style ), function($result, $item) use ( $style ) {
                 $result .= $item.':'.$style[ $item ].';';
