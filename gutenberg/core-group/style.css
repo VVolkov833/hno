@@ -1,15 +1,9 @@
 /* */
-.fct-core-group-curve-1,
-.fct-core-group-curve-2,
-.fct-core-group-curve-3,
-.fct-core-group-curve-4 {
+[class*="fct-core-group-curve-"] {
     position: relative;
 }
 
-.fct-core-group-curve-1::before,
-.fct-core-group-curve-2::before,
-.fct-core-group-curve-3::before,
-.fct-core-group-curve-4::before {
+[class*="fct-core-group-curve-"]::before {
     content: '';
     position: absolute;
     z-index: 0;

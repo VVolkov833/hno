@@ -92,7 +92,7 @@
                     wp.element.Fragment,
                     {},
                     el(BlockEdit, props),
-                    toggle(props, 'relative', 'position: relative'),
+                    toggle(props, 'relative', '{position:relative}'),
                     toggle(props, 'hide-on-mobile', 'Hide on Mobile'),
                 );
             };

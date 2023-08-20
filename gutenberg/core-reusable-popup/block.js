@@ -1,6 +1,6 @@
 (() => {
 
-    const effected_blocks = ['core/column'];
+    const effected_blocks = ['core/button'];
 
     const addClass = (classNames, classNameToAdd) => {
         const classes = classNames?.split(' ') || [];
@@ -44,7 +44,7 @@
             )
         ) : null
     };
-    const select = (props, label, options) => {
+    const select = (props, label, options, comment) => {
         const getClassName = () => {
             const classes = (props.attributes.className?.split(' ') || []).filter(Boolean);
             for (const className of classes) {
@@ -76,7 +76,12 @@
                                 const newClassName = addClass(clearedClassName, newValue && newValue || '');
                                 props.setAttributes({ className: newClassName });
                             },
-                        })
+                        }),
+                        comment ? (
+                            el('div', {},
+                            comment
+                        )
+                        ) : null
                     )
                 )
             ) : null
@@ -93,7 +98,17 @@
                     wp.element.Fragment,
                     {},
                     el(BlockEdit, props),
-                    toggle(props, prefix + 'shadow', 'Add Shadow'),
+                    select(props, 'Reusable Block Popup',
+                        [
+                            { value: '', label: 'No Popup' },
+                            ...blockArray
+                        ],
+                       el('a',
+                            { href: '/wp-admin/edit.php?post_type=wp_block' },
+                            'Manage Reusable blocks'
+                        )
+                    ),
+                    toggle(props, 'popup-preload', 'Preload the content'),
                 );
             };
         })

@@ -1,5 +1,5 @@
 (() => {
-    //++can store data inside style variables to not ruin the block structure
+
     const effected_blocks = ['core/group'];
 
     const addClass = (classNames, classNameToAdd) => {
