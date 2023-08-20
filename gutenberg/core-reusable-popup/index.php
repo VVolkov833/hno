@@ -70,4 +70,69 @@ add_action( 'wp_enqueue_scripts', function() use ($block_mod_name) {
     wp_register_style( $block_mod_name, false );
     wp_enqueue_style( $block_mod_name );
     wp_add_inline_style( $block_mod_name, FCT_DEV ? $style_contents : css_minify( $style_contents ) );
+
+    $script_path = __DIR__ . '/scripts.js';
+    $script_contents = file_get_contents( $script_path );
+
+    wp_register_script( $block_mod_name . '-script', false );
+    wp_enqueue_script( $block_mod_name . '-script' );
+    wp_add_inline_script( $block_mod_name . '-script', after_DOM( $script_contents ) );
+});
+
+// fetch the reusable blocks' content
+add_action( 'rest_api_init', function () {
+
+    register_rest_route( 'fct/popups/v1', '/(?P<ids>[\d\,]+)', [
+        'methods'  => 'GET',
+        'callback' => function( WP_REST_Request $request ) {
+
+            if ( empty( $request['ids'] ) ) {
+                return new WP_REST_Response( [], 200 ); // new \WP_Error( 'nothing_found', 'No ids provided', [ 'status' => 404 ] );
+            }
+
+            $wp_query_args = [
+                'post_type' => ['wp_block'],
+                'post__in' => $request['ids'],
+                'post_status' => 'publish',
+                'posts_per_page' => 12,
+            ];
+
+            $search = new WP_Query( $wp_query_args );
+
+            if ( !$search->have_posts() ) {
+                return new WP_REST_Response( [], 200 ); // new \WP_Error( 'nothing_found', 'No results found', [ 'status' => 404 ] );
+            }
+
+            $result = [];
+            while ( $search->have_posts() ) {
+                $p = $search->next_post();
+                $result[] = [ 'id' => $p->ID, 'content' => apply_filters( 'the_content', $p->post_content ) ];
+            }
+
+            $result = new WP_REST_Response( $result, 200 );
+
+            // nocache_headers();
+
+            return $result;
+        },
+        'permission_callback' => function() {
+            //if ( empty( $_SERVER['HTTP_REFERER'] ) ) { return false; }
+            //if ( strtolower( parse_url( $_SERVER['HTTP_REFERER'], PHP_URL_HOST ) ) !== strtolower( $_SERVER['HTTP_HOST'] ) ) { return false; }
+            //if ( !current_user_can( 'administrator' ) ) { return false; } // works only with X-WP-Nonce header passed
+            return true;
+        },
+        'args' => [
+            'ids' => [
+                'description' => 'Reusable blocks post ids',
+                'type'        => 'string',
+                'required'    => true,
+                'validate_callback' => function($param) {
+                    return trim( $param ) && strcspn( $param, '0123456789,' ) === 0 ? true : false;
+                },
+                'sanitize_callback' => function($param, WP_REST_Request $request, $key) {
+                    return explode( ',', $param );
+                },
+            ],
+        ],
+    ] );
 });

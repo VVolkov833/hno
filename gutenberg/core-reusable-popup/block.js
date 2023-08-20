@@ -1,6 +1,6 @@
 (() => {
 
-    const effected_blocks = ['core/button'];
+    const effected_blocks = ['core/button', 'fct/cropped-height'];
 
     const addClass = (classNames, classNameToAdd) => {
         const classes = classNames?.split(' ') || [];

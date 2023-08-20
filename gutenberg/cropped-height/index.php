@@ -23,7 +23,7 @@ add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type
         ob_start();
 
         ?>
-            <div class="<?php echo $block_mod_name ?>"<?php echo $style_toprint ?>>
+            <div class="<?php echo $block_mod_name ?> <?php echo $props['className'] ?? '' ?>"<?php echo $style_toprint ?>>
                 <div class="<?php echo $block_mod_name ?>-inner">
                     <?php echo( $content ) ?>
                 </div>

@@ -103,4 +103,14 @@ function css_minify($css) {
     // ++ try replacing ', ' with ','
     // ++ remove space between %3E %3C and before %3E and /%3E
     return trim( $css );
-};
+}
+
+function after_DOM($script, $jQuery_check = false) {
+    return
+        ( $jQuery_check
+            ? "!function(){let a=setInterval(function(){let b=document.readyState;if(b!=='complete'&&b!=='interactive'||typeof jQuery==='undefined'){return}let $=jQuery;clearInterval(a);a=null;"
+            : "!function(){let a=setInterval(function(){let b=document.readyState;if(b!=='complete'&&b!=='interactive'){return}clearInterval(a);a=null;"
+        )
+        .$script
+        ."}, 300 )}();";
+}
