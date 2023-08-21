@@ -1,11 +1,14 @@
-.popup {
-    position: absolute;
+.popup-modal {
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
+    width: 100%;
+    max-width: var(--wp--style--global--wide-size);
+    max-height: 100%;
     padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--wp--preset--shadow--common);
     z-index: 1000;
+    overflow: auto;
 }

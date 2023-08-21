@@ -151,7 +151,8 @@
         dialog.setAttribute('aria-label', content.title);
         dialog.innerHTML = content.content;
 
-        document.body.insertAdjacentElement('beforeend', dialog); // ++ can add the loader inside the div if it is created nd shown before async
+        const parent = document.querySelector('main#main');
+        parent.insertAdjacentElement('beforeend', dialog); // ++ can add the loader inside the div if it is created nd shown before async
 
     };
 
