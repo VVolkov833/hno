@@ -106,7 +106,7 @@ add_action( 'rest_api_init', function () {
             $result = [];
             while ( $search->have_posts() ) {
                 $p = $search->next_post();
-                $result[] = [ 'id' => $p->ID, 'content' => apply_filters( 'the_content', $p->post_content ) ];
+                $result[] = [ 'id' => $p->ID, 'title' => apply_filters( 'the_title', $p->post_title ), 'content' => apply_filters( 'the_content', $p->post_content ) ];
             }
 
             $result = new WP_REST_Response( $result, 200 );
