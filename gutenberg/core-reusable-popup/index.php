@@ -102,11 +102,15 @@ add_action( 'rest_api_init', function () {
             if ( !$search->have_posts() ) {
                 return new WP_REST_Response( [], 200 ); // new \WP_Error( 'nothing_found', 'No results found', [ 'status' => 404 ] );
             }
+;
+            $close_labels = ['en' => 'Close', 'de' => 'Zuklappen'];
 
             $result = [];
             while ( $search->have_posts() ) {
                 $p = $search->next_post();
-                $result[] = [ 'id' => $p->ID, 'title' => apply_filters( 'the_title', $p->post_title ), 'content' => apply_filters( 'the_content', $p->post_content ) ];
+                $language = function_exists( 'pll_get_post_language' ) ? pll_get_post_language($p->ID) : 'en';
+                $close_label = isset( $close_labels[$language] ) ? $close_labels[$language] : $close_labels['en'];
+                $result[] = [ 'id' => $p->ID, 'title' => apply_filters( 'the_title', $p->post_title ), 'content' => apply_filters( 'the_content', $p->post_content ), 'close_label' => $close_label ];
             }
 
             $result = new WP_REST_Response( $result, 200 );

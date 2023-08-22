@@ -1,14 +1,41 @@
 .popup-modal {
+    --padding: 32px;
+    --margin: 10px;
+    --button-ending: url("data:image/svg+xml,%3Csvg width='21' height='13' viewBox='0 0 21 13' fill='none' version='1.1' xmlns='http://www.w3.org/2000/svg'%0A%3E%3Cpath d='M18.75 2.25L10.25 10.75L1.75 2.25' stroke='%23e6c18f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: calc(50% - var(--margin));
+    left: calc(50% - var(--margin));
     transform: translate(-50%, -50%);
     background-color: #fff;
-    width: 100%;
+    width: calc(100% - (var(--margin) * 2));
     max-width: var(--wp--style--global--wide-size);
-    max-height: 100%;
-    padding: 20px;
+    max-height: calc(100% - (var(--margin) * 2));;
+    margin: 0 var(--margin);
+    padding: var(--padding);
+    box-sizing: border-box;
     box-shadow: var(--wp--preset--shadow--common);
     z-index: 1000;
     overflow: auto;
+}
+@media ( max-width: 599px ) {
+    .popup-modal {
+        --padding: 22px;
+        --margin: 2px;
+    }
+}
+
+.popup-modal .close-button {
+    appearance: none;
+    border: none;
+    margin-top: 20px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    background: var(--wp--preset--color--base);
+    font-size: var(--wp--preset--font-size--small);
+    color: var(--wp--preset--color--contrast);
+    cursor: pointer;
+}
+.popup-modal .close-button::after {
+    content: var(--button-ending);
+    margin-left: 12px;
 }

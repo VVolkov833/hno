@@ -97,33 +97,30 @@
     // popup wrapper
 
     // spread click events
+    let currentTrigger = null;
+    const closePopup = e => {
+        e?.preventDefault();
+        currentTrigger.setAttribute('aria-expanded', 'false');
+        currentTrigger = null;
+        document.removeEventListener('keydown', escPress);
+        deleteModal();
+    };
+    const escPress = e => {
+        if (e.code === 'Escape') {
+            e.preventDefault();
+            closePopup();
+        }
+    };
+
     triggers.forEach(trigger => {
         const el = trigger.actualElement;
 
         const openPopup = e => {
             e.preventDefault();
-            setTimeout(openPopupReal);
-        };
-        const openPopupReal = () => {
-            // the trigger changes
             el.setAttribute('aria-expanded', 'true');
-            setTimeout(() => { document.addEventListener('click', closePopup) });
-            // keyboard event
-            document.addEventListener('keydown', e => {
-                if (e.key === 'Escape') {
-                    closePopup();
-                }
-            });
-            // the popup changes
+            currentTrigger = el;
+            document.addEventListener('keydown', escPress);
             makeModal(trigger.id);
-        };
-
-        const closePopup = () => {
-            // the trigger changes
-            el.setAttribute('aria-expanded', 'false');
-            document.removeEventListener('click', closePopup);
-            // the popup changes
-            deleteModal();
         };
 
         el.setAttribute('aria-haspopup', 'true');
@@ -133,6 +130,7 @@
 
     // create the popup modal / dialog
     let dialog;
+    const bodyStyle = document.body.style;
     const makeModal = async id => {
 
         // create the modal
@@ -151,13 +149,29 @@
         dialog.setAttribute('aria-label', content.title);
         dialog.innerHTML = content.content;
 
+        // show the modal
         const parent = document.querySelector('main#main');
         parent.insertAdjacentElement('beforeend', dialog); // ++ can add the loader inside the div if it is created nd shown before async
 
+        // add the close button
+        const closeButton = document.createElement('button');
+        closeButton.className = 'close-button';
+        closeButton.textContent = content.close_label;
+        closeButton.setAttribute('aria-label', content.close_label);
+        closeButton.addEventListener('click', closePopup);
+        dialog.appendChild(closeButton);
+        closeButton.tabIndex = 0;
+
+        // stop scrolling
+        bodyStyle.overflow = 'hidden';
+        bodyStyle.setProperty( 'touch-action', 'none' ); // for safari to not scroll the body
     };
 
     const deleteModal = () => {
         dialog?.remove();
+        // restore scrolling
+        bodyStyle.overflow = null;
+        bodyStyle.removeProperty( 'touch-action' );
     };
 
 })();

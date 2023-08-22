@@ -1,7 +1,7 @@
 .fct-cropped-height-main {
     --height: 300px;
     --button-ending: url("data:image/svg+xml,%3Csvg width='21' height='13' viewBox='0 0 21 13' fill='none' version='1.1' xmlns='http://www.w3.org/2000/svg'%0A%3E%3Cpath d='M18.75 2.25L10.25 10.75L1.75 2.25' stroke='%23e6c18f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
-    --button-text: 'Expand';
+    --button-text: 'Ausklappen';
     --gradient-height: 50px;
     --text-gap: calc(var(--gradient-height) / 2);
     position: relative;
