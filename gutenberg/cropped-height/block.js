@@ -1,9 +1,11 @@
 (() => {
 
-	const el = wp.element.createElement;
-	const InnerBlocks = wp.blockEditor.InnerBlocks;
-    const TextControl = wp.components.TextControl;
+    /* add click/hover/none behavior, add button (with text) option, remove max-height and overall opening alg?, default button with no text - use no text */
+    /* add option to hide button if click and show if hover????? */
 
+	const el = wp.element.createElement;
+
+    
 	wp.blocks.registerBlockType( blockModName, {
 		title: 'FCT Cropped Height',
         icon: 'columns',
@@ -13,9 +15,12 @@
 			height: {
 				type: 'number'
 			},
-			maxHeight: {
-				type: 'number'
-			},
+            behavior: {
+                type: 'string'
+            },
+            showButton: {
+                type: 'boolean'
+            },
             buttonText: {
                 type: 'string'
             }
@@ -24,11 +29,11 @@
 		edit: props => {
             let style = {};
             if ( props.attributes.height ) { style['--height'] = props.attributes.height+'px'; }
-            if ( props.attributes.maxHeight ) { style['--max-height'] = props.attributes.maxHeight+'px'; }
             if ( props.attributes.buttonText ) { style['--button-text'] = '"'+props.attributes.buttonText+'"'; }
+            style['--gradient-height'] = `${props.attributes.showButton ? 100 : 50}px`;
 			return el( 'div',
-				{ className: props.className+ ' ' +prefix+'main', style },
-				el( InnerBlocks, {
+				{ className: `${props.className} ${prefix}main ${!props.attributes.showButton?`button-hide`:``}`, style },
+				el( wp.blockEditor.InnerBlocks, {
                     allowedBlocks: [
                         'core/heading', 'core/paragraph', 'core/list', 'core/image', 'core/button', 'core/buttons', 'core/table', 'core/separator'
                     ],
@@ -39,13 +44,16 @@
                     ],
                     templateLock: false
                 }),
+                props.attributes.showButton ? el( 'button', {},
+                    props.attributes.buttonText
+                ) : null,
                 el( // sidebar
                     wp.element.Fragment,
                     {},
                     el( wp.blockEditor.InspectorControls, {},
                         el( wp.components.PanelBody, {},
                             el( wp.components.RangeControl, {
-                                label: 'Height (px)',
+                                label: 'Crop height (px)',
                                 value: props.attributes.height || 300,
                                 onChange: value => {
                                     props.setAttributes( { height: value } );
@@ -53,36 +61,40 @@
                                 min: 100,
                                 max: 800
                             }),
-                            el( wp.components.RangeControl, {
-                                label: 'Max-height extend (px)',
-                                value: props.attributes.maxHeight || 800,
+                            el(wp.components.SelectControl, {
+                                label: 'Behavior',
+                                value: props.attributes.behavior,
+                                options: [
+                                    { value: 'none', label: 'Just crop to height' },
+                                    { value: 'hover', label: 'Open on Hover', disabled: true }, // ++
+                                    { value: 'click', label: 'Open on Click', disabled: true }, // ++
+                                ],
                                 onChange: value => {
-                                    props.setAttributes( { maxHeight: value } );
+                                    props.setAttributes( { behavior: value } );
                                 },
-                                min: 600,
-                                max: 3000
+                            }),    
+                            el( wp.components.ToggleControl, {
+                                label: 'Show Button',
+                                checked: props.attributes.showButton || false,
+                                onChange: value => {
+                                    props.setAttributes( { showButton: value } );
+                                }
                             }),
-                            el( TextControl, {
+                            props.attributes.showButton ? el( wp.components.TextControl, {
                                 label: 'Button Text',
-                                placeholder: 'Ausklappen',
+                                //placeholder: 'Expand',
                                 value: props.attributes.buttonText,
-                                onChange: function( value ) {
+                                onChange: value => {
                                     props.setAttributes( { buttonText: value } );
                                 }
-                            })
+                            }) : null
                         )
                     )
                 )
 			);
 		},
 		save: props => {
-			return el( InnerBlocks.Content );
+			return el( wp.blockEditor.InnerBlocks.Content );
 		},
 	} );
 })();
-
-// ++ can count the height by js and add it as css variable on ready and resize
-// ++ can make a variant with checkbox and label
-// ++ can make an option to move everything along with the content reveal
-// ++ can optimize the animation, like keep the paddings of inner and move everything to single hover
-// ++ can actually make it on basis of core/group
