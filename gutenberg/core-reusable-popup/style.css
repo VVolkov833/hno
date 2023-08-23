@@ -27,7 +27,7 @@
 .popup-modal .close-button {
     appearance: none;
     border: none;
-    margin-top: 20px;
+    margin: 20px 0 0 -10px;
     padding: 10px 15px;
     box-sizing: border-box;
     background: var(--wp--preset--color--base);

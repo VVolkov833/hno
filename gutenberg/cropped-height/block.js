@@ -39,8 +39,7 @@
                     ],
                     template: [
                         [ 'core/heading', {} ],
-                        [ 'core/paragraph', {} ],
-                        [ 'core/button', {} ]
+                        [ 'core/paragraph', {} ]
                     ],
                     templateLock: false
                 }),

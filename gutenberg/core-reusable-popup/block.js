@@ -108,7 +108,7 @@
                             'Manage Reusable blocks'
                         )
                     ),
-                    toggle(props, 'popup-preload', 'Preload the content'),
+                    toggle(props, 'popup-preload', 'Preload the content'), // ++can show if a block is selected
                 );
             };
         })
