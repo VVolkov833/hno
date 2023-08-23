@@ -100,7 +100,7 @@
     let currentTrigger = null;
     const closePopup = e => {
         e?.preventDefault();
-        currentTrigger.setAttribute('aria-expanded', 'false');
+        currentTrigger?.setAttribute('aria-expanded', 'false');
         currentTrigger = null;
         document.removeEventListener('keydown', escPress);
         deleteModal();
@@ -121,6 +121,7 @@
             currentTrigger = el;
             document.addEventListener('keydown', escPress);
             makeModal(trigger.id);
+            //setTimeout(() => { document.addEventListener('click', closePopup ) });
         };
 
         el.setAttribute('aria-haspopup', 'true');

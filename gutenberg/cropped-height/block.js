@@ -28,11 +28,11 @@
 
 		edit: props => {
             let style = {};
-            if ( props.attributes.height ) { style['--height'] = props.attributes.height+'px'; }
-            if ( props.attributes.buttonText ) { style['--button-text'] = '"'+props.attributes.buttonText+'"'; }
-            style['--gradient-height'] = `${props.attributes.showButton ? 100 : 50}px`;
+            if ( props.attributes.height ) { style['--height'] = `${props.attributes.height}px`; }
+            if ( !props.attributes.showButton ) { style['--button-bias'] = 0; }
+            if ( props.attributes.buttonText ) { style['--button-text'] = `"${props.attributes.buttonText}"`; }
 			return el( 'div',
-				{ className: `${props.className} ${prefix}main ${!props.attributes.showButton?`button-hide`:``}`, style },
+				{ className: `${props.className} ${prefix}main`, style },
 				el( wp.blockEditor.InnerBlocks, {
                     allowedBlocks: [
                         'core/heading', 'core/paragraph', 'core/list', 'core/image', 'core/button', 'core/buttons', 'core/table', 'core/separator'

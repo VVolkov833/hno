@@ -27,7 +27,7 @@ add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type
                     <?php echo( $content ) ?>
                 </div>
                 <?php if ( !empty( $props['showButton'] ) ) { ?>
-                    <button><?php echo $props['buttonText'] ?? '' ?></button>
+                <button><?php echo $props['buttonText'] ?? '' ?></button>
                 <?php } ?>
             </div>
         <?php
