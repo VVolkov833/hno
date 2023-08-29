@@ -39,6 +39,12 @@
     background-color: var(--wp--preset--color--base);
 }
 
+.fct-core-group-curve-5::before {
+    --curve: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='none' fill='black' d='M 512,122 V 300 H 0 V 137.60143 C 122.73296,166.41339 349.42456,167.01185 512,122 Z'/%3E%3C/svg%3E");
+    --curve: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 40'  xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='none' fill='black' d='M 512,0 V 40 H 0 V 15.97994 C 122.73296,45.49091 349.42456,46.10389 512,0 Z'/%3E%3C/svg%3E");
+    background-color: var(--wp--preset--color--base);
+}
+
 /* */
 .fct-core-group-shadow {
     box-shadow: var(--wp--preset--shadow--common);

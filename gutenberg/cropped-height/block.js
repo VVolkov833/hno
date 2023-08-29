@@ -34,9 +34,9 @@
 			return el( 'div',
 				{ className: `${props.className} ${prefix}main`, style },
 				el( wp.blockEditor.InnerBlocks, {
-                    allowedBlocks: [
+/*                    allowedBlocks: [
                         'core/heading', 'core/paragraph', 'core/list', 'core/image', 'core/button', 'core/buttons', 'core/table', 'core/separator'
-                    ],
+                    ], //*/
                     template: [
                         [ 'core/heading', {} ],
                         [ 'core/paragraph', {} ]

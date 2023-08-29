@@ -174,9 +174,27 @@
 							"fontFamily": "Lato",
 							"fontStretch": "normal",
 							"fontStyle": "normal",
+							"fontWeight": "100",
+							"src": [
+								"file:./assets/fonts/lato/lato-v24-latin_latin-ext-100.woff2"
+							]
+						},
+						{
+							"fontFamily": "Lato",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
 							"fontWeight": "300",
 							"src": [
 								"file:./assets/fonts/lato/lato-v24-latin_latin-ext-300.woff2"
+							]
+						},
+						{
+							"fontFamily": "Lato",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/lato/lato-v24-latin_latin-ext-regular.woff2"
 							]
 						},
 						{
@@ -208,6 +226,24 @@
 							"fontFamily": "Heebo",
 							"fontStretch": "normal",
 							"fontStyle": "normal",
+							"fontWeight": "100",
+							"src": [
+								"file:./assets/fonts/heebo/heebo-v21-latin-100.woff2"
+							]
+						},
+						{
+							"fontFamily": "Heebo",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "200",
+							"src": [
+								"file:./assets/fonts/heebo/heebo-v21-latin-200.woff2"
+							]
+						},
+						{
+							"fontFamily": "Heebo",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
 							"fontWeight": "300",
 							"src": [
 								"file:./assets/fonts/heebo/heebo-v21-latin-300.woff2"
@@ -221,11 +257,144 @@
 							"src": [
 								"file:./assets/fonts/heebo/heebo-v21-latin-regular.woff2"
 							]
+						},
+						{
+							"fontFamily": "Heebo",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "500",
+							"src": [
+								"file:./assets/fonts/heebo/heebo-v21-latin-500.woff2"
+							]
+						},
+						{
+							"fontFamily": "Heebo",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "600",
+							"src": [
+								"file:./assets/fonts/heebo/heebo-v21-latin-600.woff2"
+							]
+						},
+						{
+							"fontFamily": "Heebo",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "700",
+							"src": [
+								"file:./assets/fonts/heebo/heebo-v21-latin-700.woff2"
+							]
+						},
+						{
+							"fontFamily": "Heebo",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "800",
+							"src": [
+								"file:./assets/fonts/heebo/heebo-v21-latin-800.woff2"
+							]
+						},
+						{
+							"fontFamily": "Heebo",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "900",
+							"src": [
+								"file:./assets/fonts/heebo/heebo-v21-latin-900.woff2"
+							]
 						}
 					],
 					"fontFamily": "Heebo, sans-serif",
 					"name": "Heebo",
 					"slug": "heebo"
+				},
+				{
+					"fontFace": [
+						{
+							"fontFamily": "Jost",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "100",
+							"src": [
+								"file:./assets/fonts/jost/jost-v14-latin-ext-100.woff2"
+							]
+						},
+						{
+							"fontFamily": "Jost",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "200",
+							"src": [
+								"file:./assets/fonts/jost/jost-v14-latin-ext-200.woff2"
+							]
+						},
+						{
+							"fontFamily": "Jost",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "300",
+							"src": [
+								"file:./assets/fonts/jost/jost-v14-latin-ext-300.woff2"
+							]
+						},
+						{
+							"fontFamily": "Jost",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/jost/jost-v14-latin-ext-regular.woff2"
+							]
+						},
+						{
+							"fontFamily": "Jost",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "500",
+							"src": [
+								"file:./assets/fonts/jost/jost-v14-latin-ext-500.woff2"
+							]
+						},
+						{
+							"fontFamily": "Jost",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "600",
+							"src": [
+								"file:./assets/fonts/jost/jost-v14-latin-ext-600.woff2"
+							]
+						},
+						{
+							"fontFamily": "Jost",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "700",
+							"src": [
+								"file:./assets/fonts/jost/jost-v14-latin-ext-700.woff2"
+							]
+						},
+						{
+							"fontFamily": "Jost",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "800",
+							"src": [
+								"file:./assets/fonts/jost/jost-v14-latin-ext-800.woff2"
+							]
+						},
+						{
+							"fontFamily": "Jost",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "900",
+							"src": [
+								"file:./assets/fonts/jost/jost-v14-latin-ext-900.woff2"
+							]
+						}
+					],
+					"fontFamily": "Jost, sans-serif",
+					"name": "Jost",
+					"slug": "jost"
 				},
 				{
 					"fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
@@ -310,7 +479,9 @@
 					}
 				},
 				"typography": {
-					"fontSize": "var(--wp--preset--font-size--medium)"
+					"fontFamily": "var(--wp--preset--font-family--lato)",
+					"fontSize": "var(--wp--preset--font-size--medium)",
+					"fontWeight": "400"
 				}
 			},
 			"core/search": {
@@ -607,9 +778,9 @@
 				},
 				"spacing": {
 					"padding": {
-						"top": "0.667rem",
+						"top": "0.7rem",
 						"right": "1.333rem",
-						"bottom": "0.4rem",
+						"bottom": "0.7rem",
 						"left": "1.333rem"
 					}
 				},
@@ -642,8 +813,11 @@
 			},
 			"core/separator": {
 				"spacing": {
-					"margin": "0 auto 0 0"
-				}
+                    "margin": {
+                        "left": "0!important",
+                        "right": "auto"
+                    }
+                }
 			}
 		},
 		"color": {
@@ -681,6 +855,12 @@
 					"color": {
 						"text": "var(--wp--preset--color--primary-contrast)"
 					}
+				},
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--lato)",
+					"fontSize": "0.95rem",
+					"fontWeight": "500",
+					"letterSpacing": "3px"
 				}
 			},
 			"h1": {

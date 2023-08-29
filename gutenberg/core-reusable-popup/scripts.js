@@ -116,6 +116,7 @@
         const el = trigger.actualElement;
 
         const openPopup = e => {
+            closePopup();
             e.preventDefault();
             el.setAttribute('aria-expanded', 'true');
             currentTrigger = el;
@@ -130,13 +131,13 @@
     });
 
     // create the popup modal / dialog
-    let dialog;
+    let dialog, closeBack;
     const bodyStyle = document.body.style;
     const makeModal = async id => {
 
         // create the modal
         dialog = document.createElement('div');
-        dialog.className = 'popup-modal';
+        dialog.className = 'popup-modal hidden';
         dialog.setAttribute('role', 'dialog');
         dialog.setAttribute('aria-modal', 'true');
         dialog.setAttribute('tabindex', '-1');
@@ -144,7 +145,10 @@
         // get the content
         const data = await getContent(id);
         const content = data?.length && data[0];
-        if (content.id !== id) { return }
+        if (content.id !== id) {
+            console.error('Popup not found', id);
+            return;
+        }
 
         // print the content details
         dialog.setAttribute('aria-label', content.title);
@@ -153,6 +157,7 @@
         // show the modal
         const parent = document.querySelector('main#main');
         parent.insertAdjacentElement('beforeend', dialog); // ++ can add the loader inside the div if it is created nd shown before async
+        setTimeout(()=>{ dialog.className = 'popup-modal' });
 
         // add the close button
         const closeButton = document.createElement('button');
@@ -160,8 +165,23 @@
         closeButton.textContent = content.close_label;
         closeButton.setAttribute('aria-label', content.close_label);
         closeButton.addEventListener('click', closePopup);
-        dialog.appendChild(closeButton);
         closeButton.tabIndex = 0;
+        dialog.appendChild(closeButton);
+
+        // add the close button
+        const closeX = document.createElement('button');
+        closeX.className = 'close-x';
+        closeX.setAttribute('aria-label', content.close_label);
+        closeX.addEventListener('click', closePopup);
+        closeX.tabIndex = 0;
+        dialog.appendChild(closeX);
+
+        // add the close background
+        closeBack = document.createElement('button');
+        closeBack.className = 'popup-modal-close-back';
+        closeBack.addEventListener('click', closePopup);
+        closeBack.tabIndex = -1;
+        parent.insertAdjacentElement('beforeend', closeBack);
 
         // stop scrolling
         bodyStyle.overflow = 'hidden';
@@ -170,6 +190,7 @@
 
     const deleteModal = () => {
         dialog?.remove();
+        closeBack?.remove();
         // restore scrolling
         bodyStyle.overflow = null;
         bodyStyle.removeProperty( 'touch-action' );

@@ -27,7 +27,7 @@
 
 /*.is-selected > .fct-cropped-height-main > .block-editor-inner-blocks*/
 .has-child-selected > .fct-cropped-height-main > .block-editor-inner-blocks {
-    z-index: 2;
+    z-index: 11;
     max-height: var(--max-height);
     background-color: var(--wp--preset--color--base);
     left: calc(0px - var(--hover-padding));
@@ -65,7 +65,7 @@
     padding: 10px 3px;
     position: absolute;
     bottom: 0;
-    z-index: 3;
+    z-index: 1;
     background: var(--wp--preset--color--base);
     font-size: var(--wp--preset--font-size--small);
     text-transform: uppercase;

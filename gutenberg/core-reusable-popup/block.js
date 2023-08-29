@@ -10,7 +10,7 @@
         return [...new Set(classes)].join(' ');
     };
 
-    const removeClass = (classNames, classNameToRemove) => {
+    const removeClass = (classNames, classNameToRemove) => { // ++do it by pattern!!!
         const classes = classNames?.split(' ') || [];
         const index = classes.indexOf(classNameToRemove);
         if (~index) {
