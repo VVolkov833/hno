@@ -68,9 +68,9 @@
     z-index: 1;
     background: var(--wp--preset--color--base);
     font-size: var(--wp--preset--font-size--small);
-    text-transform: uppercase;
     color: var(--wp--preset--color--contrast);
     pointer-events: none;
+    letter-spacing: 0.5px;
 }
 
 .fct-cropped-height-main button::after {

@@ -562,15 +562,12 @@
 						},
 						":focus": {
 							"typography": {
-								"textDecoration": "underline dashed"
+								"textDecoration": "underline"
 							}
 						},
 						":active": {
-							"color": {
-								"text": "var(--wp--preset--color--secondary)"
-							},
 							"typography": {
-								"textDecoration": "none"
+								"textDecoration": "underline"
 							}
 						},
 						"typography": {
@@ -599,15 +596,12 @@
 						},
 						":focus": {
 							"typography": {
-								"textDecoration": "underline dashed"
+								"textDecoration": "underline"
 							}
 						},
 						":active": {
-							"color": {
-								"text": "var(--wp--preset--color--secondary)"
-							},
 							"typography": {
-								"textDecoration": "none"
+								"textDecoration": "underline"
 							}
 						},
 						"typography": {
@@ -629,15 +623,12 @@
 						},
 						":focus": {
 							"typography": {
-								"textDecoration": "underline dashed"
+								"textDecoration": "underline"
 							}
 						},
 						":active": {
-							"color": {
-								"text": "var(--wp--preset--color--secondary)"
-							},
 							"typography": {
-								"textDecoration": "none"
+								"textDecoration": "underline"
 							}
 						},
 						"typography": {
@@ -750,15 +741,12 @@
 						},
 						":focus": {
 							"typography": {
-								"textDecoration": "underline dashed"
+								"textDecoration": "underline"
 							}
 						},
 						":active": {
-							"color": {
-								"text": "var(--wp--preset--color--secondary)"
-							},
 							"typography": {
-								"textDecoration": "none"
+								"textDecoration": "underline"
 							}
 						},
 						"typography": {
@@ -916,13 +904,10 @@
 				},
 				":focus": {
 					"typography": {
-						"textDecoration": "underline dashed"
+						"textDecoration": "none"
 					}
 				},
 				":active": {
-					"color": {
-						"text": "var(--wp--preset--color--secondary)"
-					},
 					"typography": {
 						"textDecoration": "none"
 					}
