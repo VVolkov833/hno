@@ -50,15 +50,18 @@
     appearance: none;
     margin-left: -9px;
     border: 1px solid white;
+    width: 100%;
     padding: 10px 10px 8px;
+    box-sizing: border-box;
     position: absolute;
     bottom: 0;
     z-index: 2;
     background: var(--wp--preset--color--base);
+    text-align: left;
     font-size: var(--wp--preset--font-size--small);
+    letter-spacing: 0.5px;
     color: var(--wp--preset--color--contrast);
     cursor: pointer;
-    letter-spacing: 0.5px;
 }
 .fct-cropped-height button::after {
     content: ' ' var(--button-ending);
