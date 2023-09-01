@@ -162,7 +162,7 @@
         // add the close button
         const closeButton = document.createElement('button');
         closeButton.className = 'close-button';
-        closeButton.textContent = content.close_label;
+        // closeButton.textContent = content.close_label;
         closeButton.setAttribute('aria-label', content.close_label);
         closeButton.addEventListener('click', closePopup);
         closeButton.tabIndex = 0;

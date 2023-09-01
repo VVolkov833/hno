@@ -34,9 +34,11 @@
     appearance: none;
     border: none;
     margin: 20px 0 0 -10px;
+    min-width: 160px;
     padding: 10px 15px;
     box-sizing: border-box;
     background: var(--wp--preset--color--base);
+    text-align: left;
     font-size: var(--wp--preset--font-size--small);
     color: var(--wp--preset--color--contrast);
     cursor: pointer;

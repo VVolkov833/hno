@@ -102,8 +102,8 @@ add_action( 'rest_api_init', function () {
             if ( !$search->have_posts() ) {
                 return new WP_REST_Response( [], 200 ); // new \WP_Error( 'nothing_found', 'No results found', [ 'status' => 404 ] );
             }
-;
-            $close_labels = ['en' => 'Close', 'de' => 'Zuklappen'];
+
+            $close_labels = ['en' => 'Close', 'de' => 'Schließen'];
 
             $result = [];
             while ( $search->have_posts() ) {
