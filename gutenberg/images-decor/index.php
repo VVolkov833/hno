@@ -1,15 +1,15 @@
 <?php
 
-$block_mod_name = FCT_SET['pref'].basename( __DIR__ ); // ++ can export those to the main index.php
+$block_mod_name = FCT_SET_PREF.basename( __DIR__ ); // ++ can export those to the main index.php
 $block_dir_url = get_template_directory_uri() . '/gutenberg/'. basename( __DIR__ );
-$block_type_name = FCT_SET['var'].'/'.basename( __DIR__ );
+$block_type_name = FCT_SET_SLUG.'/'.basename( __DIR__ );
 
 add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type_name) {
 
     $print_block = function($props, $content = null) use ($block_mod_name) {
 
         $style = [];
-        if ( $props['sepia'] ) { $style['--sepia'] = strval( $props['sepia'] ); }
+        if ( is_numeric( $props['sepia'] ) ) { $style['--sepia'] = strval( $props['sepia'] ); }
         $style_toprint = '';
         if ( !empty( $style ) ) {
             $style_toprint = array_reduce( array_keys( $style ), function($result, $item) use ( $style ) {
@@ -38,7 +38,7 @@ add_action( 'init', function() use ($block_mod_name, $block_dir_url, $block_type
         ?>
             <div class="<?php echo $block_mod_name ?>"<?php echo $style_toprint ?>>
                 <div class="<?php echo $block_mod_name ?>-inner">
-                    <?php array_map( $print_figure, $props['images'] ) ?>
+                    <?php array_map( $print_figure, $props['images'] ?? [] ) ?>
                 </div>
             </div>
         <?php

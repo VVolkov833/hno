@@ -1,8 +1,8 @@
 <?php
 
-$block_mod_name = FCT_SET['pref'].basename( __DIR__ );
+$block_mod_name = FCT_SET_PREF.basename( __DIR__ );
 $block_dir_url = get_template_directory_uri() . '/gutenberg/'. basename( __DIR__ );
-$block_type_name = FCT_SET['var'].'/'.basename( __DIR__ );
+$block_type_name = FCT_SET_SLUG.'/'.basename( __DIR__ );
 
 add_action( 'enqueue_block_editor_assets', function() use ($block_mod_name, $block_type_name) {
 

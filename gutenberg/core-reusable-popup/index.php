@@ -1,8 +1,8 @@
 <?php
 
-$block_mod_name = FCT_SET['pref'].basename( __DIR__ );
+$block_mod_name = FCT_SET_PREF.basename( __DIR__ );
 $block_dir_url = get_template_directory_uri() . '/gutenberg/'. basename( __DIR__ );
-$block_type_name = FCT_SET['var'].'/'.basename( __DIR__ );
+$block_type_name = FCT_SET_SLUG.'/'.basename( __DIR__ );
 
 add_action( 'enqueue_block_editor_assets', function() use ($block_mod_name, $block_type_name) {
 
@@ -76,7 +76,7 @@ add_action( 'wp_enqueue_scripts', function() use ($block_mod_name) {
 
     wp_register_script( $block_mod_name . '-script', false );
     wp_enqueue_script( $block_mod_name . '-script' );
-    wp_add_inline_script( $block_mod_name . '-script', after_DOM( $script_contents ) );
+    wp_add_inline_script( $block_mod_name . '-script', js_after_DOM( $script_contents ) );
 });
 
 // fetch the reusable blocks' content
