@@ -448,6 +448,11 @@
 					"name": "Common",
 					"slug": "common",
 					"shadow": "0px 4px 40px 0px #00000026"
+				},
+				{
+					"name": "Hover",
+					"slug": "hover",
+					"shadow": "0px 3px 7px -1px #00000066"
 				}
 			]
 		},
@@ -761,9 +766,6 @@
 				}
 			},
 			"core/button": {
-				"border": {
-					"width": "4px"
-				},
 				"spacing": {
 					"padding": {
 						"top": "0.7rem",
@@ -776,9 +778,9 @@
 					"outline": {
 						"spacing": {
 							"padding": {
-								"top": "0.667rem",
+								"top": "0.5rem",
 								"right": "1.333rem",
-								"bottom": "0.4rem",
+								"bottom": "0.5rem",
 								"left": "1.333rem"
 							}
 						},
@@ -823,21 +825,21 @@
 				},
 				":hover": {
 					"color": {
-						"background": "var(--wp--preset--color--primary-lighter)",
 						"text": "var(--wp--preset--color--contrast)"
-					}
+					},
+					"shadow": "var( --wp--preset--shadow--hover )"
 				},
 				":focus": {
 					"color": {
-						"background": "var(--wp--preset--color--primary-lighter)",
 						"text": "var(--wp--preset--color--contrast)"
-					}
+					},
+					"shadow": "var( --wp--preset--shadow--hover )"
 				},
 				":active": {
 					"color": {
-						"background": "var(--wp--preset--color--primary-lighter)",
 						"text": "var(--wp--preset--color--contrast)"
-					}
+					},
+					"shadow": "var( --wp--preset--shadow--hover )"
 				},
 				":visited": {
 					"color": {
