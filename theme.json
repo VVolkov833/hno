@@ -768,19 +768,22 @@
 			"core/button": {
 				"spacing": {
 					"padding": {
-						"top": "0.7rem",
+						"top": "0.9rem",
 						"right": "1.333rem",
-						"bottom": "0.7rem",
+						"bottom": "0.9rem",
 						"left": "1.333rem"
 					}
+				},
+				"typography": {
+					"lineHeight": "1"
 				},
 				"variations": {
 					"outline": {
 						"spacing": {
 							"padding": {
-								"top": "0.5rem",
+								"top": "0.8rem",
 								"right": "1.333rem",
-								"bottom": "0.5rem",
+								"bottom": "0.8rem",
 								"left": "1.333rem"
 							}
 						},
