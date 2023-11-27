@@ -94,6 +94,10 @@
         blockModName + '-control',
         wp.compose.createHigherOrderComponent( BlockEdit => {
             return props => {
+                const extractNumberFromClasses = classNames => {
+                    return (classNames?.match(/popup-id-(\d+)/) || [null, null])[1]; //popup-id-1115
+                };
+                let editID = extractNumberFromClasses(props.attributes.className);
                 return el(
                     wp.element.Fragment,
                     {},
@@ -103,10 +107,17 @@
                             { value: '', label: 'No Popup' },
                             ...blockArray
                         ],
-                       el('a',
-                            { href: '/wp-admin/edit.php?post_type=wp_block' },
-                            'Manage Reusable blocks'
-                        )
+                        el('span', {}, 
+                            editID ? el('a',
+                                { href: `/wp-admin/post.php?post=${editID}&action=edit`, target: `_blank` },
+                                'Edit the block'
+                            ) : null,
+                            editID ? el('span', {}, ' | ') : 0,
+                            el('a',
+                                { href: '/wp-admin/edit.php?post_type=wp_block', target: `_blank` },
+                                'Manage Reusable blocks'
+                            ),
+                        ),
                     ),
                     toggle(props, 'popup-preload', 'Preload the content'), // ++can show if a block is selected
                 );
