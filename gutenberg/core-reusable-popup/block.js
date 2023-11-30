@@ -112,7 +112,7 @@
                                 { href: `/wp-admin/post.php?post=${editID}&action=edit`, target: `_blank` },
                                 'Edit the block'
                             ) : null,
-                            editID ? el('span', {}, ' | ') : 0,
+                            editID ? el('span', {}, ' | ') : null,
                             el('a',
                                 { href: '/wp-admin/edit.php?post_type=wp_block', target: `_blank` },
                                 'Manage Reusable blocks'
