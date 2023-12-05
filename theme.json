@@ -846,7 +846,7 @@
 				},
 				":visited": {
 					"color": {
-						"text": "var(--wp--preset--color--primary-contrast)"
+						"text": "var(--wp--preset--color--contrast)"
 					}
 				},
 				"typography": {
